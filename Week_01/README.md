@@ -13,44 +13,42 @@
 
 #### 1. 选做：自己写一个简单的 Hello.java，里面需要涉及基本类型，四则运行，if 和 for，然后自己分析一下对应的字节码，有问题群里讨论。
      
-     原始代码:
-  ```java
+     代码块:
+ ```java
 
-     public static void main(String[] args) {
-         for (int i = 0; ; ) if (i++ / i - i * i % i == 0) return;
-     }
+  public static void main(String[] args) {
+         for (int i = 1; i < 100; ) i = i++ * 3 + i / 2 - i--;
+  }
 
-  ```   
+```   
      字节码:
      
+```java
 
- 
-     public com.example.demo.geek.Hello();
-        Code:
-           0: aload_0
-           1: invokespecial #1                  // Method java/lang/Object."<init>":()V
-           4: return
-    
-      public static void main(java.lang.String[]);
-        Code:
-           0: iconst_0           
-           1: istore_1
-           2: iload_1
-           3: iinc          1, 1
-           6: iload_1
-           7: idiv
-           8: iload_1
-           9: iload_1
-          10: imul
-          11: iload_1
-          12: irem
-          13: isub
-          14: ifne          2
-          17: return
-    }
+   0: iconst_1               //常量1，入操作数栈
+   1: istore_1               //常量1，出操作数栈，入LocalVariableTable槽位1，代表完成：int i = 1
+   2: iload_1                //局部标量表槽位1（int i=1）出栈，入操作数栈
+   3: bipush        100      //常量100，入操作数栈
+   5: if_icmpge     27       //比较数值，如果满足条件跳入27行指令return
+   8: iload_1                //局部标量表槽位1（int i=1）出栈，入操作数栈
+   9: iinc          1, 1     //本地变量表槽位1数值加1，(i++)
+  12: iconst_3               //常量3，入操作数栈
+  13: imul                   //操作数栈相乘计算
+  14: iload_1                
+  15: iconst_2               
+  16: idiv                   //相除
+  17: iadd                   //相加
+  18: iload_1
+  19: iinc          1, -1    
+  22: isub                   //相减
+  23: istore_1               
+  24: goto          2        //跳入第2行指令
+  27: return                 //方法执行完毕
 
 
-    
+
+
+
 
 ## 注意事项
 
