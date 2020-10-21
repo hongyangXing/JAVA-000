@@ -74,9 +74,10 @@ public class MyClassLoader extends ClassLoader {
     
     
     //-XX:MaxDirectMemorySize 设置直接内存的最大容量，如不去设置，默认和-Xmx一致
-    //-Xss  设置每个线程栈的字节数。 例如 -Xss1m 指定线程栈为1MB，与-XX:ThreadStackSize=1m等价
+    //-Xss  设置每个线程栈的字节数。 例如 -Xss1m 指定线程栈为1MB，与-XX:ThreadStackSize=1m等价,hotspot 应该不区分虚拟机栈和本地方法栈(-Xoss实际没有任何效果),栈深过小容易stackoverflow,过大影响线程池分配数量
     
-    一个java进程内存 = stack(线程栈内存(java thread count*xss)+其他栈内存(other thread count * stack size))+heap(堆(newsize+oldsize)+非堆(metaspace+css+codecache))+jvm自身+directmemory
+    1.一个java进程内存 = stack(线程栈内存(java thread count*xss))+heap(堆(newsize+oldsize)+非堆(metaspace+css+codecache))+jvm自身+directmemory
+    2.nativememory = 堆外(directmemory)+非堆;
     
     
     
