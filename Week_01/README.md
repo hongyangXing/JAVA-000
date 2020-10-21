@@ -14,13 +14,17 @@
 #### 1. 选做：自己写一个简单的 Hello.java，里面需要涉及基本类型，四则运行，if 和 for，然后自己分析一下对应的字节码，有问题群里讨论。
      
      原始代码:
-     
+  ```java
+
      public static void main(String[] args) {
          for (int i = 0; ; ) if (i++ / i - i * i % i == 0) return;
      }
-     
+
+  ```   
      字节码:
      
+
+ 
      public com.example.demo.geek.Hello();
         Code:
            0: aload_0
@@ -44,6 +48,8 @@
           14: ifne          2
           17: return
     }
+
+
     
 
 ## 注意事项
