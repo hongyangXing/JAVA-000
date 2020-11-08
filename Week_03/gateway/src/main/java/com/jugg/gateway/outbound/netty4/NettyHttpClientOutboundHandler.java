@@ -1,19 +1,11 @@
 package com.jugg.gateway.outbound.netty4;
 
 import io.netty.buffer.ByteBuf;
-import io.netty.buffer.Unpooled;
 import io.netty.channel.*;
-import io.netty.handler.codec.http.DefaultFullHttpResponse;
-import io.netty.handler.codec.http.FullHttpResponse;
 import io.netty.handler.codec.http.HttpContent;
-import io.netty.handler.codec.http.HttpResponse;
-import io.netty.util.CharsetUtil;
 import io.netty.util.ReferenceCountUtil;
 
 import java.nio.charset.Charset;
-
-import static io.netty.handler.codec.http.HttpResponseStatus.OK;
-import static io.netty.handler.codec.http.HttpVersion.HTTP_1_1;
 
 
 // service返回数据
